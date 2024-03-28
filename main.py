@@ -15,9 +15,9 @@ general_agent = Agent(role = "Math Professor",
                       allow_delegation = False,
                       verbose = True,
                       llm = llm)
-task = Task (description="""what is 3 + 5""",
+task = Task (description="""Explain why you can't divide by zero""",
              agent = general_agent,
-             expected_output = "8")
+             expected_output = """response will be a detailed explanation of why you can't divide by zero and include a mathematical proof.""")
 
 crew = Crew(
             agents=[general_agent],
