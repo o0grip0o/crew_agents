@@ -15,7 +15,7 @@ general_agent = Agent(role = "Math Professor",
                       allow_delegation = False,
                       verbose = False,
                       llm = llm)
-task = Task (description="""Explain why you can't divide by zero""",
+task = Task(description="""Explain why you can't divide by zero""",
              agent = general_agent,
              expected_output = """response will be a detailed explanation of why you can't divide by zero and must include a discrete math proof.""")
 
