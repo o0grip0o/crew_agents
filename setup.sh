@@ -11,4 +11,4 @@ ollama pull $model_name
 ollama create $custom_model_name -f ./Llama2ModelFile
 
 # remove the base model
-ollama remove $model_name
+ollama rm $model_name
