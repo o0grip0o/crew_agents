@@ -7,13 +7,14 @@ os.environ["OPENAI_API_KEY"] = "NA"
 
 llm = ChatOpenAI(
     model = "crewai-llama2",
-    base_url = "http://localhost:11434/v1")
+    base_url = "http://localhost:11434/v1",
+    )
 
 general_agent = Agent(role = "Math Professor",
                       goal = """Provide the solution to the students that are asking mathematical questions and give them the answer.""",
                       backstory = """You are an excellent math professor that likes to solve math questions in a way that everyone can understand your solution""",
                       allow_delegation = False,
-                      verbose = False,
+                      verbose = True,
                       llm = llm)
 task = Task(description="""Explain why you can't divide by zero""",
              agent = general_agent,
@@ -22,7 +23,7 @@ task = Task(description="""Explain why you can't divide by zero""",
 crew = Crew(
             agents=[general_agent],
             tasks=[task],
-            verbose=2
+            verbose=4
         )
 
 result = crew.kickoff()
