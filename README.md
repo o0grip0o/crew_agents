@@ -1,5 +1,4 @@
 ### Read me
-### Main.py
 
 This is a Python script that performs a specific task. Here's how you can run it:
 
