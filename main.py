@@ -5,7 +5,7 @@ from langchain_openai import ChatOpenAI
 
 os.environ["OPENAI_API_KEY"] = "NA"
 
-class MathProfessor:
+class MathProfessor():
 
     def __init__(self):
         self.llm = self.get_llm()
