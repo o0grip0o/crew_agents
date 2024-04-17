@@ -5,6 +5,7 @@ from crewai import Crew
 from tasks import GameTasks
 from agents import GameAgents
 from langchain_openai import ChatOpenAI
+from langchain.llms import Ollama
 
 os.environ["OPENAI_API_KEY"] = "NA"
 
@@ -14,7 +15,7 @@ class MathProfessor():
         self.llm = self.get_llm()
 
     def get_llm(self):
-        llm = ChatOpenAI(
+        llm = Ollama(
             model="crewai-llama",
             base_url="http://localhost:11434/v1",
         )
