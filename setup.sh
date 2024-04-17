@@ -2,7 +2,7 @@
 
 # variables
 model_name="llama2:13b"
-custom_model_name="crewai-llama2"
+custom_model_name="crewai-llama"
 
 # get the base model
 ollama pull $model_name

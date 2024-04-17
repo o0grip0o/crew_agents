@@ -15,7 +15,7 @@ class MathProfessor():
 
     def get_llm(self):
         llm = ChatOpenAI(
-            model="crewai-mixtral",
+            model="crewai-llama",
             base_url="http://localhost:11434/v1",
         )
         return llm
@@ -28,8 +28,8 @@ class MathProfessor():
     game = input("What is the game you would like to build? What will be the mechanics?\n")
 
     # Create Agents
-    google_doc_agent = agents.google_docs_agent()
-    sq = agents.squarespace_agent()
+    senior_engineer_agent = agents.senior_engineer_agent()
+    qa_engineer_agent = agents.qa_engineer_agent()
     chief_qa_engineer_agent = agents.chief_qa_engineer_agent()
 
     # Create Tasks
