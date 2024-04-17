@@ -1,6 +1,9 @@
 import os
 
-from crewai import Agent, Task, Crew
+from dotenv import load_dotenv
+from crewai import Crew
+from tasks import GameTasks
+from agents import GameAgents
 from langchain_openai import ChatOpenAI
 
 os.environ["OPENAI_API_KEY"] = "NA"
@@ -12,37 +15,49 @@ class MathProfessor():
 
     def get_llm(self):
         llm = ChatOpenAI(
-            model="crewai-llama2",
+            model="crewai-mixtral",
             base_url="http://localhost:11434/v1",
         )
         return llm
+    
+    tasks = GameTasks()
+    agents = GameAgents()
 
-    def agent(self, llm: ChatOpenAI) -> str:
-        general_agent = Agent(role="Math Professor",
-                                goal="""Provide the solution to the students that are asking mathematical questions and give them the answer.""",
-                                backstory="""You are an excellent math professor that likes to solve math questions in a way that everyone can understand your solution""",
-                                allow_delegation=False,
-                                verbose=True,
-                                llm=llm)
-        task = Task(description="""Explain why you can't divide by zero""",
-                    agent=general_agent,
-                    expected_output="""response will be a detailed explanation of why you can't divide by zero and must include a discrete math proof.""")
-        crew = Crew(
-            agents=[general_agent],
-            tasks=[task],
-            verbose=4
-        )
-        result = crew.kickoff()
-        return result
+    print("## Welcome to the Game Crew")
+    print('-------------------------------')
+    game = input("What is the game you would like to build? What will be the mechanics?\n")
 
-        result = agent(llm)
-        return(result)
+    # Create Agents
+    google_doc_agent = agents.google_docs_agent()
+    sq = agents.squarespace_agent()
+    chief_qa_engineer_agent = agents.chief_qa_engineer_agent()
 
-def main():
-    math_professor = MathProfessor()
-    llm = math_professor.llm
-    result = math_professor.agent(llm)
-    print(result)
+    # Create Tasks
+    code_game = tasks.code_task(senior_engineer_agent, game)
+    review_game = tasks.review_task(qa_engineer_agent, game)
+    approve_game = tasks.evaluate_task(chief_qa_engineer_agent, game)
 
-if __name__ == "__main__":
-    main()
+    # Create Crew responsible for Copy
+    crew = Crew(
+        agents=[
+            senior_engineer_agent,
+            qa_engineer_agent,
+            chief_qa_engineer_agent
+        ],
+        tasks=[
+            code_game,
+            review_game,
+            approve_game
+        ],
+        verbose=True
+    )
+
+    game = crew.kickoff()
+
+
+    # Print results
+    print("\n\n########################")
+    print("## Here is the result")
+    print("########################\n")
+    print("final code for the game:")
+    print(game)
