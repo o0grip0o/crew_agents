@@ -12,7 +12,7 @@ class MathProfessor():
 
     def get_llm(self):
         llm = ChatOpenAI(
-            model="crewai-llama2",
+            model="crewai-llama",
             base_url="http://localhost:11434/v1",
         )
         return llm
