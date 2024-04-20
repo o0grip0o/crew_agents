@@ -9,7 +9,7 @@ class GameAgents():
 
     def get_llm(self):
         return Ollama(
-            model="crewai-llama",
+            model="crewai-mixtral:8x22b",
             base_url="http://localhost:11434/v1",
         )
     
