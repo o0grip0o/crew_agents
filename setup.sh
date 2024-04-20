@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # variables
-model_name="mixtral:8x22b"
+model_name="mixtral:8x22b-instruct"
 custom_model_name="crewai-mixtral:8x22b"
 
 # get the base model
