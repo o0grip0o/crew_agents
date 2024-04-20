@@ -1,4 +1,4 @@
-FROM llama3:70b-instruct
+FROM mixtral:8x22b-instruct
 
 # Set parameters
 

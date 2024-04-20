@@ -7,7 +7,7 @@ class GameTasks():
 
 			Instructions
 			------------
-    	{game}
+    		{game}
 
 			Your Final answer must be the full python code, only the python code and nothing else.
 			"""),
