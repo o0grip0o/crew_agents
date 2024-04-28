@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 # variables
-model_name="mixtral:8x7b-instruct-v0.1-q8_0"
-custom_model_name="crewai-mixtral:8x7b-instruct-v0.1-q8_0"
+model_name="mixtral"
+custom_model_name="crewai-mixtral"
 
 # get the base model
 ollama pull $model_name

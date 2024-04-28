@@ -1,4 +1,4 @@
-FROM mixtral:8x7b-instruct-v0.1-q8_0
+FROM mixtral
 
 # Set parameters
 
